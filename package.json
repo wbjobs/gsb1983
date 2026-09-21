@@ -1,0 +1,10 @@
+{
+  "name": "dag-viewer",
+  "version": "1.0.0",
+  "description": "DAG 可视化：分层布局、上下游高亮、路径查找（SVG + Web Worker + Canvas）",
+  "private": true,
+  "scripts": {
+    "test": "node tests/test.js && node tests/dom-smoke.js",
+    "start": "node tools/serve.js"
+  }
+}

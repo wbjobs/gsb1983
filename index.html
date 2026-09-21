@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DAG 可视化 · 布局 / 高亮 / 路径</title>
+  <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+  <header class="toolbar">
+    <div class="brand">DAG Viewer</div>
+    <div class="tool-group">
+      <button id="btn-sample-order">示例：下单流程</button>
+      <button id="btn-sample-register">示例：注册流程</button>
+      <button id="btn-sample-bad">异常数据演示</button>
+      <label class="inline">随机
+        <input id="gen-count" type="number" value="1000" min="1" max="20000" class="num-input">
+        节点
+      </label>
+      <button id="btn-generate">生成</button>
+      <button id="btn-file">导入 JSON</button>
+      <input type="file" id="file-input" accept=".json,application/json" hidden>
+    </div>
+    <div class="tool-group">
+      <label class="seg"><input type="radio" name="mode" id="mode-highlight" checked>上下游高亮</label>
+      <label class="seg"><input type="radio" name="mode" id="mode-path">路径查找</label>
+    </div>
+    <div class="tool-group">
+      <label class="seg"><input type="radio" name="dir" id="dir-tb" checked>上→下</label>
+      <label class="seg"><input type="radio" name="dir" id="dir-lr">左→右</label>
+    </div>
+    <div class="tool-group">
+      <button id="btn-zoom-in">＋</button>
+      <button id="btn-zoom-out">－</button>
+      <button id="btn-fit">适应窗口</button>
+      <button id="btn-clear">清除选中</button>
+    </div>
+  </header>
+
+  <div class="statusbar">
+    <span id="stats"></span>
+      <span id="warnings" class="warnings"></span>
+    <span class="spacer"></span>
+    <span class="legend">
+      <span class="legend-up">■</span> 上游
+      <span class="legend-down">■</span> 下游
+      <span class="legend-path">■</span> 路径/选中
+      <span class="legend-start">■</span> 起点
+      <span class="legend-end">■</span> 终点
+      <span class="legend-back">■</span> 回边
+    </span>
+  </div>
+
+  <main class="main">
+    <div id="viewport" class="viewport"></div>
+    <aside id="path-panel" class="path-panel" style="display:none">
+      <div class="path-panel-title">路径结果</div>
+      <div id="path-hint" class="path-hint">路径模式：请点击起点节点</div>
+      <div id="path-count" class="path-count"></div>
+      <div class="path-nav">
+        <button id="path-prev">上一条</button>
+        <button id="path-next">下一条</button>
+      </div>
+      <div id="path-list" class="path-list"></div>
+    </aside>
+  </main>
+
+  <div class="selection-bar">
+    <span id="selected-info"></span>
+  </div>
+
+  <div id="loading" class="loading-mask">
+    <div class="loading-box">
+      <div class="spinner"></div>
+      <div class="loading-text">计算中…</div>
+    </div>
+  </div>
+  <div id="toast-box" class="toast-box"></div>
+
+  <script src="src/core.js"></script>
+  <script src="src/renderer.js"></script>
+  <script src="src/client.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>

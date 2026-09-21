@@ -1,0 +1,16 @@
+{
+  "nodes": [
+    { "id": "start" },
+    { "id": "a" },
+    { "id": "b" },
+    { "label": "缺少 id 的节点" },
+    { "id": "start" }
+  ],
+  "edges": [
+    { "source": "start", "target": "a" },
+    { "source": "a", "target": "b" },
+    { "source": "b", "target": "start" },
+    { "source": "a", "target": "ghost" },
+    { "source": "a", "target": "a" }
+  ]
+}

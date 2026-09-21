@@ -1,0 +1,11 @@
+{
+  "name": "dag-visualizer",
+  "version": "1.0.0",
+  "description": "DAG 布局、上下游高亮与路径查找（SVG + Web Worker + Canvas）",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "start": "node serve.js"
+  }
+}
